@@ -1,8 +1,11 @@
+const RANDOM_MIN = 0;
+const RANDOM_MAX = 24;
+const MIN_RANDOM_PHOTOS = 0;
+const MAX_RANDOM_PHOTOS = 10;
 const uniqueNumbersSet = new Set();
-
-const getRandomNumber = function(a, b) {
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
+const getRandomNumber = function(randomMin, randomMax) {
+  const lower = Math.ceil(Math.min(randomMin, randomMax));
+  const upper = Math.floor(Math.max(randomMin, randomMax));
   let randomNumber;
   do {
     randomNumber = Math.floor(Math.random() * (upper - lower + 1) + lower);
@@ -23,7 +26,7 @@ export const ComparePhotos = {
 
     return commentLengthB - commentLengthA;
   },
-  random : (list) => list.map(() => list[getRandomNumber(0,24)]).slice(0,10)
+  random : (list) => list.map(() => list[getRandomNumber(RANDOM_MIN,RANDOM_MAX)]).slice(MIN_RANDOM_PHOTOS,MAX_RANDOM_PHOTOS)
 };
 
 
